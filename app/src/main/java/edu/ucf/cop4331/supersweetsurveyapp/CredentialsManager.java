@@ -50,26 +50,9 @@ public class CredentialsManager {
         
         return "";
     }
-
+    // TODO: check md5 password with database
     public boolean isCredentialValid(final String md5, String username) {
 
-        String db_username = "a9634422_stav";
-        String password = "testpass1";
-        String link = "http://jstav.site50.net/login.php?username=" + db_username + "&password=" + password;
-        HttpClient client = new DefaultHttpClient();
-        HttpGet request = new HttpGet();
-
-        try {
-            request.setURI(new URI(link));
-        } catch (URISyntaxException e) {
-            e.printStackTrace();
-        }
-        try {
-            HttpResponse response = client.execute(request);
-
-        } catch (java.io.IOException e){
-            e.printStackTrace();
-        }
         return true;
     }
 }

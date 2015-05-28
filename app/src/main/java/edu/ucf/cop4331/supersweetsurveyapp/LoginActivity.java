@@ -15,24 +15,26 @@ public class LoginActivity extends Activity {
         setContentView(R.layout.activity_login);
     }
 
-
     //TODO: Connect to MySQL database and verify credentials. Possibly store logged in status in sharedpreferences/cache?
     public void checkCredentials(View v){
 
         EditText passwordField = (EditText) findViewById(R.id.login_password_edittext);
-        String password = passwordField.getText().toString();
+        EditText usernameField = (EditText) findViewById(R.id.login_username_edittext);
         CredentialsManager cm = new CredentialsManager();
 
+        String password = passwordField.getText().toString();
+        String username = usernameField.getText().toString();
 
         String md5 = cm.md5(password);
         Toast toast = Toast.makeText(getApplicationContext(), md5, Toast.LENGTH_LONG);
         toast.show();
 
-        new MySQLQueryTask().execute();
+        //new MySQLQueryTask().execute();
 
         Intent intent = new Intent(this, BrowseSurveysActivity.class);
-        startActivity(intent);
 
-
+        if (username.equals("surv")) {
+            startActivity(intent);
+        }
      }
 }

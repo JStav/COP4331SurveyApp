@@ -8,6 +8,7 @@ public abstract class EndlessScrollListener implements AbsListView.OnScrollListe
     private int loadThreshold = 5;
 
     private int startingPageIndex = 0;
+
     private int currentPage = 0;
 
     // Previous amount of items on last load

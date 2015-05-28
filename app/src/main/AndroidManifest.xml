@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="edu.ucf.cop4331.supersweetsurveyapp" >
-
+<!--
+We need the internet permission to perform the sql queries
+-->
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application

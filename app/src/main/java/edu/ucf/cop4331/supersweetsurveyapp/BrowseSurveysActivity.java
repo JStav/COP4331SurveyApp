@@ -23,6 +23,7 @@ public class BrowseSurveysActivity extends Activity {
         l.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
         l.setAdapter(adapter);
 
+        // Override the onClickListener to highlight selected choice
         l.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {

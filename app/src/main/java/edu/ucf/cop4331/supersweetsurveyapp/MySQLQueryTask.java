@@ -10,11 +10,8 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import java.net.URI;
 import java.net.URISyntaxException;
 
-/**
- * Created by stavr on 5/28/2015.
- */
+// Class responsible for asynchronous SQL queries, these will be executed in a background thread in order to not slow down the main UI thread
 public class MySQLQueryTask extends AsyncTask<String, Void, String> {
-
 
     @Override
     protected String doInBackground(String... params) {
@@ -24,15 +21,12 @@ public class MySQLQueryTask extends AsyncTask<String, Void, String> {
         HttpResponse response;
 
         try {
+
             request.setURI(new URI(link));
-        } catch (URISyntaxException e) {
-            e.printStackTrace();
-        }
-        try {
             response = client.execute(request);
             return response.toString();
 
-        } catch (java.io.IOException e) {
+        } catch (URISyntaxException | java.io.IOException e) {
             e.printStackTrace();
         }
         return "";
