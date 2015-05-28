@@ -1,0 +1,5 @@
+<resources>
+    <color name="selected_color">#bbdefb</color>
+    <color name="default_color">#ffffff</color>
+    <color name="activated_color">#bbdefb</color>
+</resources>
