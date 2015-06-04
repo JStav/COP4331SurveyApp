@@ -31,4 +31,13 @@
         android:text="@string/take_survey_text"
         android:onClick="takeSurvey"/>
 
+    <Button
+        android:id="@+id/logout_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/take_survey_button"
+        android:layout_toEndOf="@+id/take_survey_button"
+        android:text="@string/logout_text"
+        android:onClick="logout"/>
+
 </RelativeLayout>

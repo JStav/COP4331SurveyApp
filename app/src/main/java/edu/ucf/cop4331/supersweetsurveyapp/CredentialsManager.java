@@ -1,22 +1,9 @@
 package edu.ucf.cop4331.supersweetsurveyapp;
 
-
-import android.net.http.HttpResponseCache;
-import android.os.StrictMode;
-
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.impl.client.HttpClientBuilder;
-
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-// Class to hash passwords and connect to the remote database to check if user logs in
+// Class to hash passwords and check credentials
 public class CredentialsManager {
 
     public CredentialsManager(){}
@@ -45,14 +32,11 @@ public class CredentialsManager {
             return hexString.toString();
 
         } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
+            return "Exception: " + e.getMessage();
         }
-        
-        return "";
     }
-    // TODO: check md5 password with database
-    public boolean isCredentialValid(final String md5, String username) {
-
-        return true;
+    public boolean isCredentialValid(String password, String dbHash) {
+        String md5 = md5(password);
+        return md5.equals(dbHash);
     }
 }
