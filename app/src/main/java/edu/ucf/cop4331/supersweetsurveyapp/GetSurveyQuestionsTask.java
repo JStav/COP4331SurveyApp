@@ -3,6 +3,7 @@ package edu.ucf.cop4331.supersweetsurveyapp;
 import android.app.Activity;
 import android.content.Context;
 import android.os.AsyncTask;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -14,7 +15,7 @@ import java.util.List;
 /**
  *  Get the survey from the database and set it for display
  */
-public class GetSurveyTask extends AsyncTask<String , Void, Survey> {
+public class GetSurveyQuestionsTask extends AsyncTask<String , Void, Survey> {
 
     Context context;
     Activity activity;
@@ -24,7 +25,8 @@ public class GetSurveyTask extends AsyncTask<String , Void, Survey> {
     List<String> optionsText = new ArrayList<>();
 
 
-    public GetSurveyTask(String surveyId){
+    public GetSurveyQuestionsTask(Context context, String surveyId){
+        this.context = context;
         this.surveyId = surveyId;
     }
 
@@ -36,7 +38,6 @@ public class GetSurveyTask extends AsyncTask<String , Void, Survey> {
         MySQLQuery getSurveyQuery = new MySQLQuery(action1);
         MySQLQuery getOptionsQuery = new MySQLQuery(action2);
         Survey s = new Survey(surveyId);
-        SurveyQuestion question = new SurveyQuestion();
 
         getSurveyQuery.setSurveyId(surveyId);
 
@@ -48,23 +49,30 @@ public class GetSurveyTask extends AsyncTask<String , Void, Survey> {
             JSONObject questions = new JSONObject(qs);
             JSONArray questionsArray = questions.getJSONArray("questions");
 
+            // Get one question at a time from the JSON
             for(int i = 0; i < questionsArray.length(); i++){
 
+                // Extract text, id, and type
                 JSONObject questionObject = questionsArray.getJSONObject(i);
                 qText = questionObject.getString("question_text");
                 qId = questionObject.getString("question_id");
-                qType = questionObject.getString("qType");
+                qType = questionObject.getString("qtype_id");
 
+                // Create a SurveyQuestion
+                SurveyQuestion question = new SurveyQuestion();
                 question.setQuestionText(qText);
                 question.setQuestionId(qId);
                 question.setqTypeId(qType);
 
                 getOptionsQuery.setQuestionId(qId);
+
+                // Query the database for the options
                 ops = getOptionsQuery.query();
 
                 JSONObject options = new JSONObject(ops);
                 JSONArray optionsArray = options.getJSONArray("options");
 
+                // Based on the type, we construct our question differently
                 switch (qType){
                     case "1":
                         question.setTFOptions();
@@ -88,6 +96,7 @@ public class GetSurveyTask extends AsyncTask<String , Void, Survey> {
                         break;
                 }
 
+                // Add the question to the survey and then repeat for the rest
                 s.addQuestion(question);
             }
 
@@ -96,5 +105,12 @@ public class GetSurveyTask extends AsyncTask<String , Void, Survey> {
         }
 
         return s;
+    }
+
+
+    @Override
+    protected void onPostExecute(Survey survey) {
+        super.onPostExecute(survey);
+
     }
 }

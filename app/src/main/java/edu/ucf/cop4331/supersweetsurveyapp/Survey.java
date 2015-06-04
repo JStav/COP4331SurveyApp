@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by stavr on 6/1/2015.
+ *  Represent a single survey
  */
 public class Survey {
 
@@ -25,7 +25,5 @@ public class Survey {
     public List<SurveyQuestion> getQuestions(){
         return questions;
     }
-
-
 
 }

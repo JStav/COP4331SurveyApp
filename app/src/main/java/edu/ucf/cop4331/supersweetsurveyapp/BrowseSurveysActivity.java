@@ -5,18 +5,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
-
-import java.util.List;
 
 public class BrowseSurveysActivity extends Activity {
 
     ListView l;
     String surveyTitle;
     GetSurveysTask getSurveysTask;
-    GetSurveyTask getSurveyTask;
+    GetSurveyQuestionsTask getSurveyTask;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +24,7 @@ public class BrowseSurveysActivity extends Activity {
         getSurveysTask = new GetSurveysTask(this);
         getSurveysTask.execute();
 
-        getSurveyTask = new GetSurveyTask("1");
+        getSurveyTask = new GetSurveyQuestionsTask(this, "1");
         getSurveyTask.execute();
 
         l = (ListView) findViewById(R.id.survey_list_view);
