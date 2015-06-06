@@ -15,4 +15,11 @@
         android:layout_centerHorizontal="true"
         android:text="@string/submit_survey_text"/>
 
+    <ListView
+        android:id="@+id/take_survey_list_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
 </RelativeLayout>

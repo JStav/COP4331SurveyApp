@@ -3,6 +3,7 @@ package edu.ucf.cop4331.supersweetsurveyapp;
 import android.app.Activity;
 import android.content.Context;
 import android.os.AsyncTask;
+import android.widget.ListView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -27,6 +28,7 @@ public class GetSurveyQuestionsTask extends AsyncTask<String , Void, Survey> {
     public GetSurveyQuestionsTask(Context context, String surveyId){
         this.context = context;
         this.surveyId = surveyId;
+        activity = (Activity) context;
     }
 
     @Override
@@ -110,9 +112,10 @@ public class GetSurveyQuestionsTask extends AsyncTask<String , Void, Survey> {
     @Override
     protected void onPostExecute(Survey survey) {
         super.onPostExecute(survey);
+        ListView l = (ListView) activity.findViewById(R.id.take_survey_list_view);
+        SurveyQuestionAdapter adapter = new SurveyQuestionAdapter(context, survey);
+        l.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+        l.setAdapter(adapter);
 
-        for( int i = 0; i < survey.getQuestions().size(); i++ ) {
-            System.out.println(survey.getQuestions().get(i).getQuestionText());
-        }
     }
 }

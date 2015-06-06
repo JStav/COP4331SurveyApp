@@ -45,9 +45,9 @@ public class BrowseSurveysActivity extends Activity {
     }
 
     public void takeSurvey(View view){
-        Toast toast = Toast.makeText(this, surveyId, Toast.LENGTH_SHORT);
-        toast.show();
         Intent intent = new Intent(getApplicationContext(), TakeSurveyActivity.class);
+
+        // Pass the surveyId to TakeSurveyActivity
         intent.putExtra("surveyId", surveyId);
         startActivity(intent);
     }

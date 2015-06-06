@@ -29,11 +29,11 @@ public class SurveyAdapter extends ArrayAdapter<Survey> {
 
 
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View rowView = inflater.inflate(R.layout.survey_layout_text, parent, false);
+        View rowView = inflater.inflate(R.layout.survey_layout, parent, false);
 
         Survey survey = getItem(position);
 
-        TextView surveyTitle = (TextView) rowView.findViewById(R.id.surveyTextView);
+        TextView surveyTitle = (TextView) rowView.findViewById(R.id.survey_text_view);
 
         surveyTitle.setText(survey.getSurveyName());
 

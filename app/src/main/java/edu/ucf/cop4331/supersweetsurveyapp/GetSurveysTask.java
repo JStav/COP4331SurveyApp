@@ -3,7 +3,6 @@ package edu.ucf.cop4331.supersweetsurveyapp;
 import android.app.Activity;
 import android.content.Context;
 import android.os.AsyncTask;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import org.json.JSONArray;
@@ -11,7 +10,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by stavr on 5/31/2015.
@@ -70,7 +68,7 @@ public class GetSurveysTask extends AsyncTask<String, Void, ArrayList<Survey>> {
         super.onPostExecute(s);
 
         ListView l = (ListView) activity.findViewById(R.id.survey_list_view);
-        SurveyAdapter adapter = new SurveyAdapter(context, R.layout.survey_layout_text, s);
+        SurveyAdapter adapter = new SurveyAdapter(context, R.layout.survey_layout, s);
         l.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
         l.setAdapter(adapter);
 
