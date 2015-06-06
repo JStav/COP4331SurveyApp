@@ -33,12 +33,10 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fda8dabf-863f-4574-8c8b-5be620423413" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/edu/ucf/cop4331/supersweetsurveyapp/SurveyAdapter.java" />
+    <list default="true" id="fda8dabf-863f-4574-8c8b-5be620423413" name="Default" comment="Now properly fetches questions from database">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/edu/ucf/cop4331/supersweetsurveyapp/BrowseSurveysActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/edu/ucf/cop4331/supersweetsurveyapp/BrowseSurveysActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/edu/ucf/cop4331/supersweetsurveyapp/GetSurveyQuestionsTask.java" afterPath="$PROJECT_DIR$/app/src/main/java/edu/ucf/cop4331/supersweetsurveyapp/GetSurveyQuestionsTask.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/edu/ucf/cop4331/supersweetsurveyapp/GetSurveysTask.java" afterPath="$PROJECT_DIR$/app/src/main/java/edu/ucf/cop4331/supersweetsurveyapp/GetSurveysTask.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/edu/ucf/cop4331/supersweetsurveyapp/Survey.java" afterPath="$PROJECT_DIR$/app/src/main/java/edu/ucf/cop4331/supersweetsurveyapp/Survey.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/edu/ucf/cop4331/supersweetsurveyapp/TakeSurveyActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/edu/ucf/cop4331/supersweetsurveyapp/TakeSurveyActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="SuperSweetSurveyApp.iws" />
@@ -116,14 +114,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BrowseSurveysActivity.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="BrowseSurveysActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/ucf/cop4331/supersweetsurveyapp/BrowseSurveysActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.565093">
-              <caret line="47" column="38" selection-start-line="47" selection-start-column="38" selection-end-line="47" selection-end-column="38" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="49" column="58" selection-start-line="49" selection-start-column="58" selection-end-line="49" selection-end-column="58" />
               <folding>
-                <element signature="e#930#1232#0" expanded="true" />
-                <element signature="e#1231#1232#0" expanded="true" />
+                <element signature="e#888#1190#0" expanded="true" />
+                <element signature="e#1189#1190#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -139,14 +137,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GetSurveyQuestionsTask.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="GetSurveyQuestionsTask.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/ucf/cop4331/supersweetsurveyapp/GetSurveyQuestionsTask.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="51" column="61" selection-start-line="51" selection-start-column="61" selection-end-line="51" selection-end-column="61" />
+            <state vertical-scroll-proportion="0.7620529">
+              <caret line="115" column="9" selection-start-line="115" selection-start-column="9" selection-end-line="115" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TakeSurveyActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/ucf/cop4331/supersweetsurveyapp/TakeSurveyActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="20" column="41" selection-start-line="20" selection-start-column="41" selection-end-line="20" selection-end-column="41" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -157,19 +165,6 @@
             <state vertical-scroll-proportion="0.0">
               <caret line="7" column="2" selection-start-line="7" selection-start-column="2" selection-end-line="7" selection-end-column="2" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SessionManager.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/ucf/cop4331/supersweetsurveyapp/SessionManager.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="19" column="41" selection-start-line="19" selection-start-column="41" selection-end-line="19" selection-end-column="41" />
-              <folding>
-                <element signature="e#1285#1286#0" expanded="true" />
-                <element signature="e#1360#1361#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -1530,7 +1525,6 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_survey_stats.xml" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/java/edu/ucf/cop4331/supersweetsurveyapp/SurveyStatsActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/edu/ucf/cop4331/supersweetsurveyapp/TakeSurveyActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/edu/ucf/cop4331/supersweetsurveyapp/EndlessScrollListener.java" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/edu/ucf/cop4331/supersweetsurveyapp/MySQLQueryTask.java" />
@@ -1547,11 +1541,12 @@
         <option value="$PROJECT_DIR$/app/src/main/java/edu/ucf/cop4331/supersweetsurveyapp/LoginTask.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/edu/ucf/cop4331/supersweetsurveyapp/GetSurveyTask.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/edu/ucf/cop4331/supersweetsurveyapp/MySQLQuery.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/edu/ucf/cop4331/supersweetsurveyapp/GetSurveyQuestionsTask.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/edu/ucf/cop4331/supersweetsurveyapp/SurveyAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/edu/ucf/cop4331/supersweetsurveyapp/GetSurveysTask.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/edu/ucf/cop4331/supersweetsurveyapp/Survey.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/edu/ucf/cop4331/supersweetsurveyapp/BrowseSurveysActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/edu/ucf/cop4331/supersweetsurveyapp/TakeSurveyActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/edu/ucf/cop4331/supersweetsurveyapp/GetSurveyQuestionsTask.java" />
       </list>
     </option>
   </component>
@@ -1991,7 +1986,13 @@
       <option name="project" value="LOCAL" />
       <updated>1433386276015</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Now properly fetches questions from database">
+      <created>1433552672333</created>
+      <option name="number" value="00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1433552672333</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TodoView">
@@ -2015,11 +2016,11 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32995737" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1924307" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1913237" sideWeight="0.48720682" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1913237" sideWeight="0.48720682" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22024472" sideWeight="0.48081023" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19213483" sideWeight="0.4936034" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32995737" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25361514" sideWeight="0.47441363" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25361514" sideWeight="0.47441363" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23240939" sideWeight="0.49447513" order="1" side_tool="false" content_ui="combo" />
@@ -2279,13 +2280,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/ucf/cop4331/supersweetsurveyapp/TakeSurveyActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.32409012">
-          <caret line="14" column="5" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/bg_key.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.10725552">
@@ -2478,25 +2472,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/survey_layout_text.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.862069">
-          <caret line="10" column="69" selection-start-line="10" selection-start-column="69" selection-end-line="10" selection-end-column="69" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/ucf/cop4331/supersweetsurveyapp/SurveyQuestionAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/ucf/cop4331/supersweetsurveyapp/Survey.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -2520,6 +2495,25 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/ucf/cop4331/supersweetsurveyapp/SurveyQuestionAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/survey_layout_text.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.862069">
+          <caret line="10" column="69" selection-start-line="10" selection-start-column="69" selection-end-line="10" selection-end-column="69" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/ucf/cop4331/supersweetsurveyapp/SurveyAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -2527,6 +2521,25 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/ucf/cop4331/supersweetsurveyapp/BrowseSurveysActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="49" column="58" selection-start-line="49" selection-start-column="58" selection-end-line="49" selection-end-column="58" />
+          <folding>
+            <element signature="e#888#1190#0" expanded="true" />
+            <element signature="e#1189#1190#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/ucf/cop4331/supersweetsurveyapp/TakeSurveyActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="20" column="41" selection-start-line="20" selection-start-column="41" selection-end-line="20" selection-end-column="41" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2540,21 +2553,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/ucf/cop4331/supersweetsurveyapp/GetSurveyQuestionsTask.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="51" column="61" selection-start-line="51" selection-start-column="61" selection-end-line="51" selection-end-column="61" />
+        <state vertical-scroll-proportion="0.7620529">
+          <caret line="115" column="9" selection-start-line="115" selection-start-column="9" selection-end-line="115" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/ucf/cop4331/supersweetsurveyapp/BrowseSurveysActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.565093">
-          <caret line="47" column="38" selection-start-line="47" selection-start-column="38" selection-end-line="47" selection-end-column="38" />
-          <folding>
-            <element signature="e#930#1232#0" expanded="true" />
-            <element signature="e#1231#1232#0" expanded="true" />
           </folding>
         </state>
       </provider>

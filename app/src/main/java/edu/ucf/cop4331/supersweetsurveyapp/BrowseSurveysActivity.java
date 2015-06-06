@@ -13,7 +13,6 @@ public class BrowseSurveysActivity extends Activity {
     ListView l;
     String surveyId;
     GetSurveysTask getSurveysTask;
-    GetSurveyQuestionsTask getSurveyTask;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +47,8 @@ public class BrowseSurveysActivity extends Activity {
     public void takeSurvey(View view){
         Toast toast = Toast.makeText(this, surveyId, Toast.LENGTH_SHORT);
         toast.show();
-        Intent intent = new Intent(this, TakeSurveyActivity.class);
+        Intent intent = new Intent(getApplicationContext(), TakeSurveyActivity.class);
+        intent.putExtra("surveyId", surveyId);
         startActivity(intent);
     }
 

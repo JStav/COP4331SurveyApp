@@ -111,7 +111,7 @@ public class GetSurveyQuestionsTask extends AsyncTask<String , Void, Survey> {
     protected void onPostExecute(Survey survey) {
         super.onPostExecute(survey);
 
-        for( int i = 0; i < survey.getQuestions().size(); i++) {
+        for( int i = 0; i < survey.getQuestions().size(); i++ ) {
             System.out.println(survey.getQuestions().get(i).getQuestionText());
         }
     }
