@@ -11,7 +11,7 @@ import android.widget.Toast;
 public class BrowseSurveysActivity extends Activity {
 
     ListView l;
-    String surveyTitle;
+    String surveyId;
     GetSurveysTask getSurveysTask;
     GetSurveyQuestionsTask getSurveyTask;
 
@@ -24,8 +24,6 @@ public class BrowseSurveysActivity extends Activity {
         getSurveysTask = new GetSurveysTask(this);
         getSurveysTask.execute();
 
-        getSurveyTask = new GetSurveyQuestionsTask(this, "1");
-        getSurveyTask.execute();
 
         l = (ListView) findViewById(R.id.survey_list_view);
         // Override the onClickListener to highlight selected choice
@@ -33,7 +31,7 @@ public class BrowseSurveysActivity extends Activity {
             @Override
             public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
                 l.setItemChecked(position, true);
-                surveyTitle = (String) arg0.getItemAtPosition(position);
+                surveyId = arg0.getItemAtPosition(position).toString();
             }
         });
     }
@@ -48,8 +46,7 @@ public class BrowseSurveysActivity extends Activity {
     }
 
     public void takeSurvey(View view){
-
-        Toast toast = Toast.makeText(this, surveyTitle, Toast.LENGTH_SHORT);
+        Toast toast = Toast.makeText(this, surveyId, Toast.LENGTH_SHORT);
         toast.show();
         Intent intent = new Intent(this, TakeSurveyActivity.class);
         startActivity(intent);

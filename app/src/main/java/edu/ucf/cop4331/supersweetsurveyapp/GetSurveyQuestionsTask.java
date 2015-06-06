@@ -3,7 +3,6 @@ package edu.ucf.cop4331.supersweetsurveyapp;
 import android.app.Activity;
 import android.content.Context;
 import android.os.AsyncTask;
-import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -112,5 +111,8 @@ public class GetSurveyQuestionsTask extends AsyncTask<String , Void, Survey> {
     protected void onPostExecute(Survey survey) {
         super.onPostExecute(survey);
 
+        for( int i = 0; i < survey.getQuestions().size(); i++) {
+            System.out.println(survey.getQuestions().get(i).getQuestionText());
+        }
     }
 }

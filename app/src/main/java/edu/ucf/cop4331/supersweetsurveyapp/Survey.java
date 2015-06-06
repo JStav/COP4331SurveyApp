@@ -18,6 +18,10 @@ public class Survey {
         questions = new ArrayList<>();
     }
 
+    public Survey(){
+
+    }
+
     public void addQuestion(SurveyQuestion q){
         questions.add(q);
     }
@@ -26,4 +30,24 @@ public class Survey {
         return questions;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getSurveyName() {
+        return surveyName;
+    }
+
+    public void setSurveyName(String surveyName) {
+        this.surveyName = surveyName;
+    }
+
+    @Override
+    public String toString() {
+        return id;
+    }
 }
