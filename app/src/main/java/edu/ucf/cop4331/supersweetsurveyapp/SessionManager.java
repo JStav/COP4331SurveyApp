@@ -18,6 +18,7 @@ public class SessionManager {
     private static final String LOGIN_KEY = "LoginCache";
     private static final String IS_LOGGED_IN = "IsLoggedIn";
     private static final String USERNAME = "Username";
+    private static final String ID = "ID";
 
     public SessionManager (Context context){
         this.context = context;
@@ -26,8 +27,9 @@ public class SessionManager {
     }
 
     // Create a login session by setting the SharedPreference key IS_LOGGED_IN to true and storing the username
-    public void createLoginSession(String username){
+    public void createLoginSession(String username, String userId){
         editor.putString(USERNAME, username);
+        editor.putString(ID, userId);
         editor.putBoolean(IS_LOGGED_IN, true);
         editor.commit();
     }

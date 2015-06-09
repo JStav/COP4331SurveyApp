@@ -28,6 +28,7 @@ We need the internet permission to perform the sql queries
         <activity
             android:name=".TakeSurveyActivity"
             android:label="@string/title_activity_take_survey"
+            android:windowSoftInputMode="adjustPan"
             android:parentActivityName=".BrowseSurveysActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

@@ -5,11 +5,14 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
-public class LoginTask extends AsyncTask<String, Void, String> {
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+public class LoginTask extends AsyncTask<Void, Void, SurveyUser> {
 
     private Context context;
-    private String password;
-    private String username;
+    private String username, password, jUser, jPassword, jUserId;
     private String action = "login";
     SessionManager sessionManager;
 
@@ -20,23 +23,46 @@ public class LoginTask extends AsyncTask<String, Void, String> {
     }
 
     @Override
-    protected String doInBackground(String... params) {
+    protected SurveyUser doInBackground(Void... params) {
 
         MySQLQuery usernameQuery = new MySQLQuery(action, username);
-        return usernameQuery.query();
+        String userJSON = usernameQuery.query();
+
+        System.out.println(userJSON);
+
+        SurveyUser surveyUser = new SurveyUser("", "");
+
+        try {
+
+            JSONObject userQuery = new JSONObject(userJSON);
+            JSONArray jsonArray = userQuery.getJSONArray("user");
+            JSONObject user = jsonArray.getJSONObject(0);
+
+            jUser = user.getString("email");
+            jPassword = user.getString("password");
+            jUserId = user.getString("user_id");
+
+            surveyUser.setUserId(jUserId);
+            surveyUser.setUsername(jUser);
+
+        } catch(JSONException e){
+            e.printStackTrace();
+        }
+
+        return surveyUser;
     }
 
     @Override
-    protected void onPostExecute(String s) {
-        super.onPostExecute(s);
+    protected void onPostExecute(SurveyUser su) {
+        super.onPostExecute(su);
         CredentialsManager cm = new CredentialsManager();
 
-        boolean isLoginValid = cm.isCredentialValid(password, s);
+        boolean isLoginValid = cm.isCredentialValid(password, jPassword);
 
         if (isLoginValid){
             // Stores logged in status and username
             sessionManager = new SessionManager(context);
-            sessionManager.createLoginSession(username);
+            sessionManager.createLoginSession(su.getUsername(), su.getUserId());
 
             // Start the browse survey activity
             Intent intent = new Intent(context, BrowseSurveysActivity.class);

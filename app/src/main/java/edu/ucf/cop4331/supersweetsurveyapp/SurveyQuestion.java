@@ -39,6 +39,7 @@ public class SurveyQuestion {
     public void setQuestionText(String questionText) {
         this.questionText = questionText;
     }
+
     public void setOption1(String option1){
         this.option1 = option1;
     }

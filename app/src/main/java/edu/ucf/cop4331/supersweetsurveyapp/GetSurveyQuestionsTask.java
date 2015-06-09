@@ -19,8 +19,8 @@ public class GetSurveyQuestionsTask extends AsyncTask<String , Void, Survey> {
 
     Context context;
     Activity activity;
-    String action1 = "get_questions";
-    String action2 = "get_options";
+    static final String action1 = "get_questions";
+    static final String action2 = "get_options";
     String surveyId;
     List<String> optionsText = new ArrayList<>();
 
@@ -114,6 +114,7 @@ public class GetSurveyQuestionsTask extends AsyncTask<String , Void, Survey> {
         super.onPostExecute(survey);
         ListView l = (ListView) activity.findViewById(R.id.take_survey_list_view);
         SurveyQuestionAdapter adapter = new SurveyQuestionAdapter(context, survey);
+        adapter.setActivity((TakeSurveyActivity) context);
         l.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
         l.setAdapter(adapter);
 
