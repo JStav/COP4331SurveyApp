@@ -20,6 +20,7 @@ public class MySQLQuery {
     String username;
     String surveyId;
     String questionId;
+    String answers;
 
     public MySQLQuery(String action, String username) {
         this.username = username;
@@ -41,6 +42,7 @@ public class MySQLQuery {
         switch (action) {
             case "login":
                 link = "http://jstav.site50.net/" + phpFileName + "?action=login&username=" + username;
+                System.out.println(link);
                 break;
 
             case "get_survey_list":
@@ -78,6 +80,7 @@ public class MySQLQuery {
             }
 
             in.close();
+
             return sb.toString();
 
         } catch (URISyntaxException | java.io.IOException e) {
@@ -96,6 +99,10 @@ public class MySQLQuery {
 
     public void setQuestionId(String questionId){
         this.questionId = questionId;
+    }
+
+    public void setAnswers(String answers){
+        this.answers = answers;
     }
 
 }

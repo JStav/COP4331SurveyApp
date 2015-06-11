@@ -2,7 +2,9 @@ package edu.ucf.cop4331.supersweetsurveyapp;
 
 import android.app.Activity;
 import android.content.Context;
+import android.text.Editable;
 import android.text.Layout;
+import android.text.TextWatcher;
 import android.text.method.MultiTapKeyListener;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -63,7 +65,7 @@ public class SurveyQuestionAdapter extends BaseAdapter{
 
         View view = convertView;
         TextView questionText;
-        SurveyQuestion currentQuestion = questions.get(position);
+        final SurveyQuestion currentQuestion = questions.get(position);
         int questionType = getItemViewType(position);
 
         switch (questionType) {
@@ -81,11 +83,13 @@ public class SurveyQuestionAdapter extends BaseAdapter{
 
                 RadioGroup rg = (RadioGroup) view.findViewById(R.id.true_false_radio_group);
 
+                final String tfQuestionId = currentQuestion.getQuestionId();
+
                 rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
                     @Override
                     public void onCheckedChanged(RadioGroup group, int checkedId) {
                         RadioButton rb = (RadioButton) activity.findViewById(checkedId);
-                        activity.addResponse(rb.getText().toString());
+                        activity.addResponse(Integer.parseInt(tfQuestionId), "'" + rb.getText().toString() + "'");
                     }
                 });
 
@@ -108,23 +112,43 @@ public class SurveyQuestionAdapter extends BaseAdapter{
 
                 rg = (RadioGroup) view.findViewById(R.id.multi_radio_group);
 
+                final String mQuestionId = currentQuestion.getQuestionId();
+
                 rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
                     @Override
                     public void onCheckedChanged(RadioGroup group, int checkedId) {
                         RadioButton rb = (RadioButton) activity.findViewById(checkedId);
-                        activity.addResponse(rb.getText().toString());
+                        activity.addResponse(Integer.parseInt(mQuestionId), "'" + currentQuestion.getCheckedId(rb.getText().toString()) + "'");
                     }
                 });
 
                 break;
 
             case 3:
-
                 view = layoutInflater.inflate(R.layout.short_response_layout, parent, false);
 
                 EditText answerEditText = (EditText) view.findViewById(R.id.short_edittext);
-                questionText = (TextView) view.findViewById(R.id.short_text);
 
+                final String sQuestionId = currentQuestion.getQuestionId();
+
+                answerEditText.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+                        activity.addResponse(Integer.parseInt(sQuestionId),"'" + s.toString() + "'");
+                    }
+                });
+
+                questionText = (TextView) view.findViewById(R.id.short_text);
                 answerEditText.setHint("Type answer here");
                 questionText.setText(currentQuestion.getQuestionText());
                 break;

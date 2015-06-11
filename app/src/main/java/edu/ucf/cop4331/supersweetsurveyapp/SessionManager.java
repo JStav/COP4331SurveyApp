@@ -44,4 +44,14 @@ public class SessionManager {
         return (mSharedPreferences.getBoolean(IS_LOGGED_IN, false));
     }
 
+    public String getCurrentUserId(){
+
+        return mSharedPreferences.getString(ID, "NULL");
+
+    }
+
+    public String getCurrentUserName(){
+        return mSharedPreferences.getString(USERNAME, "NULL");
+    }
+
 }

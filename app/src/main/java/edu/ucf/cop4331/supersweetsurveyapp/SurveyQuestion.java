@@ -71,4 +71,18 @@ public class SurveyQuestion {
     public String getOption4() {
         return option4;
     }
+
+    public String getCheckedId(String option){
+
+        if(option.equals(option4)){
+            return "4";
+        } else if(option.equals(option2)) {
+            return "2";
+        } else if(option.equals(option3)){
+            return "3";
+        } else {                                // Return 1 if as the default if nothing is entered
+            return "1";
+        }
+    }
+
 }
