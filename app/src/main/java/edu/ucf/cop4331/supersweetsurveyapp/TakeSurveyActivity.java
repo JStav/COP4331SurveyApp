@@ -56,22 +56,22 @@ public class TakeSurveyActivity extends Activity {
 
         int size = responses.size();
 
+        System.out.println("SIZE: " + size);
+
         String finalString = "(" + 1 + "," + userId + ", " + surveyId + "," + responses.get(1) + ")";
 
         for(int i = 2; i <= size; i++){
             finalString += ",(" + i + "," + userId + ", " + surveyId + "," + responses.get(i) + ")";
         }
 
+        System.out.println(finalString);
         finalString = finalString.replaceAll(" ", "%20");
         finalString = finalString.replaceAll("'", "%27");
-        System.out.println(finalString);
 
 
-        SubmitAnswersTask submitAnswersTask = new SubmitAnswersTask(this, finalString);
+
+        SubmitAnswersTask submitAnswersTask = new SubmitAnswersTask(this, finalString, surveyId, userId);
         submitAnswersTask.execute();
-
-        Button b = (Button) findViewById(R.id.submit_survey_button);
-        b.setEnabled(false);
 
     }
 }

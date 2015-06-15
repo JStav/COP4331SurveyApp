@@ -37,6 +37,8 @@ public class SessionManager {
     // Log out user by changing the the SharedPreference IS_LOGGED_IN to false
     public void logOutUser(){
         editor.putBoolean(IS_LOGGED_IN, false);
+        editor.putString(USERNAME, "");
+        editor.putString(ID, "");
         editor.commit();
     }
 

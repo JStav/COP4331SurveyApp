@@ -52,22 +52,26 @@ public class GetSurveyQuestionsTask extends AsyncTask<String , Void, Survey> {
             JSONArray questionsArray = questions.getJSONArray("questions");
             // Get one question at a time from the JSON
             for(int i = 0; i < questionsArray.length(); i++){
+
                 // Extract text, id, and type
                 JSONObject questionObject = questionsArray.getJSONObject(i);
                 qText = questionObject.getString("question_text");
                 qId = questionObject.getString("question_id");
                 qType = questionObject.getString("qtype_id");
+
                 // Create a SurveyQuestion
                 SurveyQuestion question = new SurveyQuestion();
                 question.setQuestionText(qText);
                 question.setQuestionId(qId);
                 question.setqTypeId(qType);
-                System.out.println(question.getQuestionId());
-                getOptionsQuery.setQuestionId(qId);
+
                 // Query the database for the options
+                getOptionsQuery.setQuestionId(qId);
+                getOptionsQuery.setSurveyId(surveyId);
                 ops = getOptionsQuery.query();
                 JSONObject options = new JSONObject(ops);
                 JSONArray optionsArray = options.getJSONArray("options");
+
                 // Based on the type, we construct our question differently
                 switch (qType){
                     case "1":
@@ -77,6 +81,7 @@ public class GetSurveyQuestionsTask extends AsyncTask<String , Void, Survey> {
                         for (int j = 0; j < optionsArray.length(); j++){
                             JSONObject optionObject = optionsArray.getJSONObject(j);
                             option = optionObject.getString("option_text");
+                            System.out.println(option);
                             optionsText.add(option);
                         }
                         question.setOption1(optionsText.get(0));
@@ -93,9 +98,6 @@ public class GetSurveyQuestionsTask extends AsyncTask<String , Void, Survey> {
         } catch(JSONException e){
             e.printStackTrace();
         }
-
-
-
         return s;
     }
 

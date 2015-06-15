@@ -1,14 +1,15 @@
 package edu.ucf.cop4331.supersweetsurveyapp;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
+import android.util.Log;
 
+import java.io.BufferedInputStream;
 import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.net.URI;
-import java.net.URISyntaxException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 /**
  * Created by stavr on 5/31/2015.
@@ -16,11 +17,9 @@ import java.net.URISyntaxException;
  */
 public class MySQLQuery {
 
-    String action;
-    String username;
-    String surveyId;
-    String questionId;
-    String answers;
+    String action, username, surveyId, questionId, answers, userId;
+
+    private static final String TAG = "MySQLQuery";
 
     public MySQLQuery(String action, String username) {
         this.username = username;
@@ -33,59 +32,49 @@ public class MySQLQuery {
 
     public String query() {
 
-        String link;
+        String link = "http://jstav.site50.net/";
         String phpFileName = "android_sql.php";
-        HttpClient client = new DefaultHttpClient();
-        HttpGet request = new HttpGet();
-        HttpResponse response;
-
-        switch (action) {
-            case "login":
-                link = "http://jstav.site50.net/" + phpFileName + "?action=login&username=" + username;
-                System.out.println(link);
-                break;
-
-            case "get_survey_list":
-                link = "http://jstav.site50.net/" + phpFileName + "?action=get_surveys";
-                break;
-
-            case "get_questions":
-                link = "http://jstav.site50.net/" + phpFileName + "?action=get_questions&survey_id=" + surveyId;
-                break;
-
-            case "get_options":
-                link = "http://jstav.site50.net/" + phpFileName + "?action=get_options&question_id=" + questionId;
-                break;
-
-            // Placeholder default
-            // TODO: Change to a more appropriate default later on
-            default:
-                link = "http://jstav.site50.net/login.php";
-                break;
-        }
+        URL url;
 
         try {
+            switch (action) {
+                case "login":
+                    url = new URL(link + phpFileName + "?action=login&username=" + username);
+                    break;
 
-            request.setURI(new URI(link));
-            response = client.execute(request);
-            BufferedReader in = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
+                case "get_survey_list":
+                    url = new URL(link + phpFileName + "?action=get_surveys");
+                    break;
 
-            // Using StringBuffer as it is thread safe
-            StringBuffer sb = new StringBuffer("");
-            String line;
+                case "get_questions":
+                    url = new URL(link + phpFileName + "?action=get_questions&survey_id=" + surveyId);
+                    break;
 
-            while ((line = in.readLine()) != null) {
-                sb.append(line);
-                break;
+                case "get_options":
+                    url = new URL(link + phpFileName + "?action=get_options&question_id=" + questionId + "&survey_id=" + surveyId);
+                    break;
+
+                case "submit_answers":
+
+                    url = new URL(link + phpFileName + "?action=submit_answers&survey_id=" + surveyId + "&user_id=" + userId + "&answers=" + answers);
+                    Log.i(TAG, url.toString());
+                    break;
+
+                // Placeholder default
+                // TODO: Change to a more appropriate default later on
+                default:
+                    url = new URL("http://jstav.site50.net/login.php");
+                    break;
             }
 
-            in.close();
+            return URLResponse(url);
 
-            return sb.toString();
 
-        } catch (URISyntaxException | java.io.IOException e) {
-            return "Exception: " + e.getMessage();
+        } catch(MalformedURLException e){
+            Log.e(TAG, e.getMessage());
         }
+
+        return "";
     }
 
 
@@ -105,4 +94,42 @@ public class MySQLQuery {
         this.answers = answers;
     }
 
+    public void setUserId(String userId){
+        this.userId = userId;
+    }
+
+    private String readStream(InputStream is){
+
+        try {
+            StringBuffer sb = new StringBuffer();
+            BufferedReader br = new BufferedReader(new InputStreamReader(is), 1000);
+
+            for (String line = br.readLine(); line != null; line = br.readLine()){
+                sb.append(line);
+            }
+
+            is.close();
+            return sb.toString();
+        } catch (IOException e){
+            Log.e(TAG, e.getMessage());
+        }
+        return "";
+    }
+
+    private String URLResponse(URL url){
+
+        try {
+            HttpURLConnection mUrlConnection = (HttpURLConnection) url.openConnection();
+            mUrlConnection.setDoInput(true);
+            InputStream is = new BufferedInputStream(mUrlConnection.getInputStream());
+            String s = readStream(is);
+            Log.i(TAG, s);
+            return s;
+
+        } catch (IOException e){
+            Log.e(TAG, e.getMessage());
+        }
+
+        return "";
+    }
 }

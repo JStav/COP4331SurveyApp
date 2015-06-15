@@ -12,14 +12,15 @@ import android.widget.Toast;
 public class SubmitAnswersTask extends AsyncTask<Void, Void, String>{
 
     Context context;
-    String answers;
+    String answers, surveyId, userId;
     Activity activity;
-
-    public SubmitAnswersTask(Context context, String answers){
+    public SubmitAnswersTask(Context context, String answers, String surveyId, String userId){
         super();
         this.context = context;
         this.answers = answers;
         this.activity = (Activity) context;
+        this.surveyId = surveyId;
+        this.userId = userId;
     }
 
 
@@ -28,33 +29,29 @@ public class SubmitAnswersTask extends AsyncTask<Void, Void, String>{
 
         SessionManager sessionManager = new SessionManager(context);
 
-        MySQLQuery submitAnswersQuery = new MySQLQuery("submit_answers", sessionManager.getCurrentUserName());
+        MySQLQuery submitAnswersQuery = new MySQLQuery("submit_answers");
+        submitAnswersQuery.setUserId(sessionManager.getCurrentUserId());
 
         submitAnswersQuery.setAnswers(answers);
+        submitAnswersQuery.setSurveyId(surveyId);
 
         String isSubmitted = submitAnswersQuery.query();
 
         System.out.println("SUBMITTED? " + isSubmitted);
 
-        if (isSubmitted.equals("TRUE")){
-            activity.runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    Toast.makeText(context, "Thank you for completing this survey!", Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(context, BrowseSurveysActivity.class);
-                    context.startActivity(intent);
-                }
-            });
+        return isSubmitted;
+    }
 
+    @Override
+    protected void onPostExecute(String s) {
+        super.onPostExecute(s);
+
+        if(s.equals("1")) {
+            Toast.makeText(context, "Thank you for completing this survey!", Toast.LENGTH_LONG).show();
+            Activity activity = (Activity) context;
+            activity.finish();
         } else {
-            activity.runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    Toast toast = Toast.makeText(context, "An error occurred, please try again", Toast.LENGTH_LONG);
-                    toast.show();
-                }
-            });
+            Toast.makeText(context, "An error occurred, please try again", Toast.LENGTH_LONG).show();
         }
-        return "Ok";
     }
 }

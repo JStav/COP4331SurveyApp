@@ -28,7 +28,7 @@ public class LoginTask extends AsyncTask<Void, Void, SurveyUser> {
         MySQLQuery usernameQuery = new MySQLQuery(action, username);
         String userJSON = usernameQuery.query();
 
-        System.out.println("TEST: " + userJSON);
+        System.out.println("TEST:" + userJSON);
 
         SurveyUser surveyUser = new SurveyUser("", "");
 

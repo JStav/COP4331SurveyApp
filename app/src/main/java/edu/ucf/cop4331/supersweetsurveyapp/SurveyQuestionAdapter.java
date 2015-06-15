@@ -119,6 +119,7 @@ public class SurveyQuestionAdapter extends BaseAdapter{
                     public void onCheckedChanged(RadioGroup group, int checkedId) {
                         RadioButton rb = (RadioButton) activity.findViewById(checkedId);
                         activity.addResponse(Integer.parseInt(mQuestionId), "'" + currentQuestion.getCheckedId(rb.getText().toString()) + "'");
+                        System.out.println(currentQuestion.getCheckedId(rb.getText().toString()));
                     }
                 });
 
