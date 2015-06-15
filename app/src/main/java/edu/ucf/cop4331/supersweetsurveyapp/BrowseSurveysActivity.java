@@ -45,11 +45,44 @@ public class BrowseSurveysActivity extends Activity {
     }
 
     public void takeSurvey(View view){
-        Intent intent = new Intent(getApplicationContext(), TakeSurveyActivity.class);
 
-        // Pass the surveyId to TakeSurveyActivity
-        intent.putExtra("surveyId", surveyId);
-        startActivity(intent);
+        // Check if the user has taken the survey first
+
+        Thread thread = new Thread (new Runnable() {
+            @Override
+            public void run() {
+
+                SessionManager sm = new SessionManager(getApplicationContext());
+
+                MySQLQuery hasTakenSurveyQuery = new MySQLQuery("has_taken_survey");
+                hasTakenSurveyQuery.setSurveyId(surveyId);
+                hasTakenSurveyQuery.setUserId(sm.getCurrentUserId());
+
+                String hasTakenSurvey = hasTakenSurveyQuery.query();
+
+                System.out.println(hasTakenSurvey);
+                if(hasTakenSurvey.trim().equals("false")) {
+
+                    Intent intent = new Intent(getApplicationContext(), TakeSurveyActivity.class);
+
+                    // Pass the surveyId to TakeSurveyActivity
+                    intent.putExtra("surveyId", surveyId);
+                    startActivity(intent);
+                } else {
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(getApplicationContext(), "You have already taken this survey", Toast.LENGTH_LONG).show();
+                        }
+                    });
+
+                }
+            }
+        });
+
+        thread.start();
+
+
     }
 
     public void viewSurveyStats(View view){

@@ -55,9 +55,12 @@ public class MySQLQuery {
                     break;
 
                 case "submit_answers":
-
                     url = new URL(link + phpFileName + "?action=submit_answers&survey_id=" + surveyId + "&user_id=" + userId + "&answers=" + answers);
-                    Log.i(TAG, url.toString());
+                    break;
+
+                case "has_taken_survey":
+                    url = new URL(link + phpFileName + "?action=has_taken_survey&user_id=" + userId + "&survey_id=" + surveyId);
+                    System.out.println(url.toString());
                     break;
 
                 // Placeholder default
@@ -80,10 +83,6 @@ public class MySQLQuery {
 
     public void setSurveyId(String surveyId){
         this.surveyId = surveyId;
-    }
-
-    public void setAction(String action){
-        this.action = action;
     }
 
     public void setQuestionId(String questionId){

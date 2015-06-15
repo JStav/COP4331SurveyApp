@@ -37,8 +37,6 @@ public class SubmitAnswersTask extends AsyncTask<Void, Void, String>{
 
         String isSubmitted = submitAnswersQuery.query();
 
-        System.out.println("SUBMITTED? " + isSubmitted);
-
         return isSubmitted;
     }
 
@@ -46,7 +44,7 @@ public class SubmitAnswersTask extends AsyncTask<Void, Void, String>{
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
 
-        if(s.equals("1")) {
+        if(s.trim().equals("1")) {
             Toast.makeText(context, "Thank you for completing this survey!", Toast.LENGTH_LONG).show();
             Activity activity = (Activity) context;
             activity.finish();

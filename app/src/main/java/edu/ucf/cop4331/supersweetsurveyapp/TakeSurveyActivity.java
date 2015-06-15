@@ -22,12 +22,11 @@ public class TakeSurveyActivity extends Activity {
 
     HashMap<Integer, String> responses;
     String surveyId;
-
+    GetSurveyQuestionsTask getSurveyQuestionsTask;
 
     public TakeSurveyActivity(){
     }
 
-    GetSurveyQuestionsTask getSurveyQuestionsTask;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
