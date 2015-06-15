@@ -47,7 +47,7 @@ public class BrowseSurveysActivity extends Activity {
     public void takeSurvey(View view){
 
         // Check if the user has taken the survey first
-
+        // Network operation must be run on a separate thread
         Thread thread = new Thread (new Runnable() {
             @Override
             public void run() {
@@ -58,13 +58,12 @@ public class BrowseSurveysActivity extends Activity {
                 hasTakenSurveyQuery.setSurveyId(surveyId);
                 hasTakenSurveyQuery.setUserId(sm.getCurrentUserId());
 
+                // Query the database, will return true if the user has taken the survey, false otherwise
                 String hasTakenSurvey = hasTakenSurveyQuery.query();
 
-                System.out.println(hasTakenSurvey);
                 if(hasTakenSurvey.trim().equals("false")) {
 
                     Intent intent = new Intent(getApplicationContext(), TakeSurveyActivity.class);
-
                     // Pass the surveyId to TakeSurveyActivity
                     intent.putExtra("surveyId", surveyId);
                     startActivity(intent);
@@ -91,6 +90,7 @@ public class BrowseSurveysActivity extends Activity {
     }
 
     public void logout(View view){
+        // End the session
         SessionManager sessionManager = new SessionManager(this);
         Intent intent = new Intent(this, LoginActivity.class);
         Toast toast = Toast.makeText(this, R.string.logout_message, Toast.LENGTH_SHORT);

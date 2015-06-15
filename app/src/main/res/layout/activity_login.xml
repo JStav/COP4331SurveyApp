@@ -44,4 +44,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
+    <Button
+        android:id="@+id/create_account_button"
+        android:text="Create Account"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/login_button"
+        android:layout_centerHorizontal="true"
+        android:onClick="createAccount"/>
+
 </RelativeLayout>

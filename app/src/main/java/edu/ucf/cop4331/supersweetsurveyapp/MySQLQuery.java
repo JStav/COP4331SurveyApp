@@ -17,7 +17,7 @@ import java.net.URL;
  */
 public class MySQLQuery {
 
-    String action, username, surveyId, questionId, answers, userId;
+    String action, username, surveyId, questionId, answers, userId, credentials;
 
     private static final String TAG = "MySQLQuery";
 
@@ -63,6 +63,10 @@ public class MySQLQuery {
                     System.out.println(url.toString());
                     break;
 
+                case "create_account":
+                    url = new URL(link + phpFileName + "?action=create_account&credentials=" + credentials);
+                    break;
+
                 // Placeholder default
                 // TODO: Change to a more appropriate default later on
                 default:
@@ -95,6 +99,10 @@ public class MySQLQuery {
 
     public void setUserId(String userId){
         this.userId = userId;
+    }
+
+    public void setCredentials(String credentials){
+        this.credentials = credentials;
     }
 
     private String readStream(InputStream is){

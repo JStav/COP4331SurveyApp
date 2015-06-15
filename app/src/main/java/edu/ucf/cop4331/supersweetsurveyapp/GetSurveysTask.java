@@ -35,7 +35,6 @@ public class GetSurveysTask extends AsyncTask<String, Void, ArrayList<Survey>> {
         ArrayList<Survey> surveyList = new ArrayList<>();
 
         // Parse JSON to get all survey titles and return a string array to populate the listview
-        // TODO: Make all JSON parsing in a separate class?
         try {
             JSONObject surveys = new JSONObject(s);
             JSONArray jArray = surveys.getJSONArray("surveys");
