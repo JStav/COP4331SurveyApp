@@ -67,6 +67,10 @@ public class MySQLQuery {
                     url = new URL(link + phpFileName + "?action=create_account&credentials=" + credentials);
                     break;
 
+                case "live_stats":
+                    url = new URL("http://jstav.site50.net/livejson.php?survey_id=" + surveyId);
+                    break;
+
                 // Placeholder default
                 // TODO: Change to a more appropriate default later on
                 default:

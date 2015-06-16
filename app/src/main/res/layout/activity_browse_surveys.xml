@@ -5,39 +5,52 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="edu.ucf.cop4331.supersweetsurveyapp.BrowseSurveysActivity">
+    tools:context="edu.ucf.cop4331.supersweetsurveyapp.BrowseSurveysActivity" >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="15dp"
+        android:gravity="center_horizontal"
+        android:text="Survey List"
+        android:textSize="30sp"
+        android:id="@+id/textView2" />
 
     <ListView
         android:id="@+id/survey_list_view"
         android:layout_width="match_parent"
         android:layout_height="300dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"/>
+        android:divider="#B6B6B6"
+        android:dividerHeight="1dp"
+        android:layout_below="@+id/textView2"
+        android:layout_alignParentEnd="true"
+        android:layout_above="@+id/view_survey_stats_button" />
 
     <Button
         android:id="@+id/view_survey_stats_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/survey_list_view"
         android:text="@string/view_stats_text"
-        android:onClick="viewSurveyStats"/>
+        android:onClick="viewSurveyStats"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true" />
 
     <Button
         android:id="@+id/take_survey_button"
-        android:layout_width="wrap_content"
+        android:layout_width="137dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/survey_list_view"
-        android:layout_toEndOf="@id/view_survey_stats_button"
         android:text="@string/take_survey_text"
-        android:onClick="takeSurvey"/>
+        android:onClick="takeSurvey"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/view_survey_stats_button" />
 
     <Button
         android:id="@+id/logout_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/take_survey_button"
-        android:layout_toEndOf="@+id/take_survey_button"
         android:text="@string/logout_text"
-        android:onClick="logout"/>
+        android:onClick="logout"
+        android:layout_alignTop="@+id/take_survey_button"
+        android:layout_alignEnd="@+id/survey_list_view" />
 
 </RelativeLayout>

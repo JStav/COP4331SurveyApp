@@ -81,10 +81,6 @@ public class CreateAccountActivity extends Activity {
             thread.start();
 
         }
-
-
-
-
     }
 
 }

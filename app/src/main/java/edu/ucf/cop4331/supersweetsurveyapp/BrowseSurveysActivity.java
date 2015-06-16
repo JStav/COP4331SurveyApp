@@ -71,7 +71,7 @@ public class BrowseSurveysActivity extends Activity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            Toast.makeText(getApplicationContext(), "You have already taken this survey", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), "You have already taken this survey.", Toast.LENGTH_LONG).show();
                         }
                     });
 
@@ -86,6 +86,7 @@ public class BrowseSurveysActivity extends Activity {
 
     public void viewSurveyStats(View view){
         Intent intent = new Intent(this, SurveyStatsActivity.class);
+        intent.putExtra("surveyId", surveyId);
         startActivity(intent);
     }
 
