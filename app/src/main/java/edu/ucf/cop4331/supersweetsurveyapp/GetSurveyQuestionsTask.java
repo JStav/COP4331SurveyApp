@@ -81,7 +81,7 @@ public class GetSurveyQuestionsTask extends AsyncTask<String , Void, Survey> {
                         for (int j = 0; j < optionsArray.length(); j++){
                             JSONObject optionObject = optionsArray.getJSONObject(j);
                             option = optionObject.getString("option_text");
-                            System.out.println(option);
+                            //System.out.println(option);
                             optionsText.add(option);
                         }
                         question.setOption1(optionsText.get(0));
@@ -108,6 +108,14 @@ public class GetSurveyQuestionsTask extends AsyncTask<String , Void, Survey> {
         ListView l = (ListView) activity.findViewById(R.id.take_survey_list_view);
         SurveyQuestionAdapter adapter = new SurveyQuestionAdapter(context, survey);
         adapter.setActivity((TakeSurveyActivity) context);
+
+        for(int i = 0; i<survey.getQuestions().size(); i++){
+            System.out.println(survey.getQuestions().get(i).option1);
+            System.out.println(survey.getQuestions().get(i).option2);
+            System.out.println(survey.getQuestions().get(i).option3);
+            System.out.println(survey.getQuestions().get(i).option4);
+        }
+
         l.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
         l.setAdapter(adapter);
 

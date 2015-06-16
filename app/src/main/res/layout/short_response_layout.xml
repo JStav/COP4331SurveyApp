@@ -8,14 +8,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="30sp"
+        android:paddingBottom="10dp"
         />
 
     <EditText
         android:id="@+id/short_edittext"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/short_text"
         android:textSize="20sp"
+        android:textAlignment="center"
         android:imeOptions="actionDone"
         android:singleLine="true"/>
 
