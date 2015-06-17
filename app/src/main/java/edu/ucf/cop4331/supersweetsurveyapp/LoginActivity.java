@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
+
 public class LoginActivity extends Activity {
 
     LoginTask loginTask;
@@ -25,12 +26,6 @@ public class LoginActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-//
-//        EditText userField = (EditText) findViewById(R.id.login_username_edittext);
-//        EditText passwordField = (EditText) findViewById(R.id.login_password_edittext);
-//
-//        userField.setText("fake@fake.com");
-//        passwordField.setText("test");
     }
 
     // Override the back button to go home instead of back to the list of surveys (from tapping logout)

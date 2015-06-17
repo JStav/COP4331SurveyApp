@@ -2,4 +2,6 @@
     <color name="selected_color">#bbdefb</color>
     <color name="default_color">#ffffff</color>
     <color name="activated_color">#bbdefb</color>
+    <color name="ColorPrimary">#03A9F4</color>
+    <color name="ColorPrimaryDark">#1976D2</color>
 </resources>

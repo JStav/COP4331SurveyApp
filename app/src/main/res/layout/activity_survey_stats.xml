@@ -4,7 +4,8 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="edu.ucf.cop4331.supersweetsurveyapp.SurveyStatsActivity">
+    tools:context="edu.ucf.cop4331.supersweetsurveyapp.SurveyStatsActivity"
+    android:background="#2196F3">
 
     <TextView
         android:layout_width="wrap_content"

@@ -31,8 +31,8 @@ public class CreateAccountActivity extends Activity {
         EditText passET = (EditText) findViewById(R.id.password_edit_text);
         EditText confirmPassET = (EditText) findViewById(R.id.confirm_password_edit_text);
 
-        String firstName = firstNameET.getText().toString();
-        String lastName = lastNameET.getText().toString();
+        String firstName = firstNameET.getText().toString().trim();
+        String lastName = lastNameET.getText().toString().trim();
         String email = emailET.getText().toString();
         String pass = passET.getText().toString();
         String confirmPass = confirmPassET.getText().toString();
