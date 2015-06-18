@@ -90,6 +90,13 @@ public class BrowseSurveysActivity extends Activity {
         startActivity(intent);
     }
 
+
+    public void viewSurveyFeed(View view){
+        Intent intent = new Intent(this, SurveyFeedActivity.class);
+        intent.putExtra("surveyId", surveyId);
+        startActivity(intent);
+    }
+
     public void logout(View view){
         // End the session
         SessionManager sessionManager = new SessionManager(this);

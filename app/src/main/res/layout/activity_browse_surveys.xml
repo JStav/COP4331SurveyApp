@@ -32,19 +32,19 @@
         android:id="@+id/view_survey_stats_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/view_stats_text"
+        android:text="STATS"
         android:onClick="viewSurveyStats"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true" />
 
     <Button
         android:id="@+id/take_survey_button"
-        android:layout_width="137dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/take_survey_text"
+        android:text="TAKE"
         android:onClick="takeSurvey"
         android:layout_alignParentBottom="true"
-        android:layout_toEndOf="@+id/view_survey_stats_button" />
+        android:layout_toStartOf="@+id/logout_button" />
 
     <Button
         android:id="@+id/logout_button"
@@ -54,5 +54,14 @@
         android:onClick="logout"
         android:layout_alignTop="@+id/take_survey_button"
         android:layout_alignEnd="@+id/survey_list_view" />
+
+    <Button
+        android:layout_width="65dp"
+        android:layout_height="wrap_content"
+        android:text="FEED"
+        android:id="@+id/button"
+        android:layout_alignParentBottom="true"
+        android:onClick="viewSurveyFeed"
+        android:layout_toStartOf="@+id/take_survey_button" />
 
 </RelativeLayout>

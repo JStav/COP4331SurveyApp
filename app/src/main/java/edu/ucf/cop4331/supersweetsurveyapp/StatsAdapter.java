@@ -7,22 +7,25 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
+import java.util.PriorityQueue;
 
 /**
  * Adapter responsible for filling a ListView with survey questions
  */
-public class LiveStatsAdapter extends BaseAdapter{
+public class StatsAdapter extends BaseAdapter{
 
     private LayoutInflater layoutInflater;
     private Context context;
     private SurveyFeedActivity activity;
-    private ArrayList<SurveyAnswer> answers;
+    private ArrayList<StatsTracker> st;
 
-    public LiveStatsAdapter(Context context, ArrayList<SurveyAnswer> answers){
+    public StatsAdapter(Context context, ArrayList<StatsTracker> st){
         super();
         this.context = context;
-        this.answers = answers;
+        this.st = st;
         layoutInflater = LayoutInflater.from(context);
     }
 
@@ -32,12 +35,12 @@ public class LiveStatsAdapter extends BaseAdapter{
 
     @Override
     public int getCount() {
-        return answers.size();
+        return st.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return answers.get(position);
+        return st.get(position);
     }
 
     @Override
@@ -49,18 +52,25 @@ public class LiveStatsAdapter extends BaseAdapter{
     public View getView(int position, View convertView, ViewGroup parent) {
 
         View view = convertView;
-        TextView questionText, answerText, submittedText;
-        final SurveyAnswer currentAnswer = answers.get(position);
 
-        view = layoutInflater.inflate(R.layout.live_stats_layout, parent, false);
+        view = layoutInflater.inflate(R.layout.statslayout, parent, false);
 
-        questionText = (TextView) view.findViewById(R.id.question_text);
-        answerText = (TextView) view.findViewById(R.id.answer_text);
-        submittedText = (TextView) view.findViewById(R.id.submitter_text);
+        String build = "";
 
-        questionText.setText("Question: " + currentAnswer.question);
-        answerText.setText("Answer: "  + currentAnswer.answer);
-        submittedText.setText("Submitter: " + currentAnswer.submitter);
+        TextView question = (TextView) view.findViewById(R.id.textView4);
+        TextView answer = (TextView) view.findViewById(R.id.textView5);
+
+        question.setText(st.get(position).getQuestion());
+
+        for( String key : st.get(position).questionStats.keySet()){
+
+            build += key + ": " + st.get(position).questionStats.get(key) + "\n";
+
+        }
+
+        answer.setText(build);
+
+
 
         return view;
     }
